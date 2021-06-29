@@ -457,7 +457,7 @@ const getHTMLFromAtext = async (pad, atext, authorColors) => {
   return pieces.join('');
 };
 
-exports.getPadHTMLDocument = async (padId, revNum) => {
+exports.getPadHTMLDocument = async (padId, revNum, readOnlyId) => {
   const pad = await padManager.getPad(padId);
 
   // Include some Styles into the Head for Export
@@ -475,7 +475,7 @@ exports.getPadHTMLDocument = async (padId, revNum) => {
 
   return eejs.require('ep_etherpad-lite/templates/export_html.html', {
     body: html,
-    padId: Security.escapeHTML(padId),
+    padId: readOnlyId ? Security.escapeHTML(readOnlyId) : Security.escapeHTML(padId),
     extraCSS: stylesForExportCSS,
   });
 };

@@ -19,7 +19,7 @@ exports.expressCreateServer = (hookName, args, cb) => {
 
     if (await hasPadAccess(req, res)) {
       // render the html document
-      const html = await exporthtml.getPadHTMLDocument(padId, null);
+      const html = await exporthtml.getPadHTMLDocument(padId, null, null);
       res.send(html);
     }
   });

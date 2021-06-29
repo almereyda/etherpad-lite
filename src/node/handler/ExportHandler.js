@@ -63,7 +63,7 @@ exports.doExport = async (req, res, padId, readOnlyId, type) => {
     res.send(txt);
   } else {
     // render the html document
-    let html = await exporthtml.getPadHTMLDocument(padId, req.params.rev);
+    let html = await exporthtml.getPadHTMLDocument(padId, req.params.rev, readOnlyId);
 
     // decide what to do with the html export
 

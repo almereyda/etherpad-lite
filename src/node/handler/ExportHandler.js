@@ -56,7 +56,7 @@ exports.doExport = async (req, res, padId, readOnlyId, type) => {
   // if this is a plain text export, we can do this directly
   // We have to over engineer this because tabs are stored as attributes and not plain text
   if (type === 'etherpad') {
-    const pad = await exportEtherpad.getPadRaw(padId);
+    const pad = await exportEtherpad.getPadRaw(padId, readOnlyId);
     res.send(pad);
   } else if (type === 'txt') {
     const txt = await exporttxt.getPadTXTDocument(padId, req.params.rev);
